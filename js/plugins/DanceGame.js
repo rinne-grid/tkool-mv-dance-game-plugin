@@ -216,7 +216,7 @@ Scene_DanceGame.prototype.check_game_over = function() {
         if(this._max_combo_count > this._combo) {
             this._combo = this._max_combo_count;
         }
-        $gameMessage.add("スコア:"+this._score+"\n"+"コンボ数:"+this._max_combo_count);
+        $gameMessage.add("スコア:"+this._score+"\n"+"コンボ数:"+this._combo);
         AudioManager.fadeOutBgm(2);
         SceneManager.pop();
     }
