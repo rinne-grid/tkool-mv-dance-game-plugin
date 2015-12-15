@@ -1,5 +1,8 @@
 //=============================================================================
 // DanceGame.js
+// Copyright (c) 2015 rinne_grid
+// This plugin is released under the MIT license.
+// http://opensource.org/licenses/mit-license.php
 //=============================================================================
 
 /*:
@@ -30,6 +33,9 @@ Scene_DanceGame.prototype.initialize = function() {
 
 };
 
+//=============================================================================
+// ● ゲーム設定
+//=============================================================================
 Scene_DanceGame.prototype.settings =
 {
     // game_settings
@@ -89,6 +95,9 @@ Scene_DanceGame.prototype.create = function() {
     Scene_Base.prototype.create.call(this);
 };
 
+//=============================================================================
+// ● Scene_DanceGame開始
+//=============================================================================
 Scene_DanceGame.prototype.start = function() {
     Scene_Base.prototype.start.call(this);
 
@@ -153,6 +162,9 @@ Scene_DanceGame.prototype.start = function() {
 
 };
 
+//=============================================================================
+// ● ゲーム更新
+//=============================================================================
 Scene_DanceGame.prototype.update = function() {
     Scene_Base.prototype.update.call(this);
 
@@ -210,6 +222,9 @@ Scene_DanceGame.prototype.update = function() {
     this.check_game_over();
 };
 
+//=============================================================================
+// ● ゲーム終了チェック
+//=============================================================================
 Scene_DanceGame.prototype.check_game_over = function() {
     var total_arrow_num = this._good_count + this._ok_count + this._bad_count;
     if(total_arrow_num === this._flow_max) {
@@ -222,6 +237,11 @@ Scene_DanceGame.prototype.check_game_over = function() {
     }
 };
 
+//=============================================================================
+// ● 矢印オブジェクトを返却する
+//-----------------------------------------------------------------------------
+// direction 方向用の識別子
+//=============================================================================
 Scene_DanceGame.prototype.factory_arrow = function(direction, y) {
     var _arrow = new Sprite();
 
@@ -255,7 +275,9 @@ Scene_DanceGame.prototype.factory_arrow = function(direction, y) {
 
 };
 
-
+//=============================================================================
+// ● Bitmapを設定したSpriteオブジェクトを返却する
+//=============================================================================
 Scene_DanceGame.prototype.factory_sprite_and_bitmap = function(x, y, width, height) {
     var _sprite = new Sprite();
     _sprite.bitmap = new Bitmap(width, height);
@@ -341,6 +363,9 @@ Scene_DanceGame.prototype.do_handle_game_key = function() {
 
 };
 
+//=============================================================================
+// ● 矢印の衝突判定
+//=============================================================================
 Scene_DanceGame.prototype.check_arrow_collision = function(target_arrow, direction) {
     for(var i = 0; i < this._sp_array.length; i++) {
         var _temp_sp = this._sp_array[i];
@@ -413,7 +438,9 @@ Scene_DanceGame.prototype.get_arrow_direction = function(arrow) {
 };
 
 
-// プラグイン呼び出し用
+//=============================================================================
+// ● プラグイン呼び出し用
+//=============================================================================
 (function() {
     var parameters = PluginManager.parameters('DanceGame');
 
